@@ -1,11 +1,7 @@
 import matplotlib.pyplot as plt
 import argparse
+import segmentacao as sg
 from rich.console import Console
-import utils
-import filters
-import bordas
-import segmentacao
-
 import Utils.utils_imagem as ut_img
 
 # Variáveis para passagem de argumentos via terminal
@@ -21,16 +17,7 @@ def metodo_otsu(imagem_escolhida, tipo, filtro, m, n):
     Imagem_Original = ut_img.leitura_Imagem('./imagens/{}'.format(imagem_escolhida))    
 
     # Binarização da imagem com o método de Otsu
-    Imagem_Binaria = segmentacao.otsu(Imagem_Original) 
-    
-    # ImgFiltrada = bordas.Derivative(Imagem_Original,tipo, filtro,m,n)
-    
-    # limiar = 0.1*np.mean(ImgFiltrada)
-    # Imagem_Binaria = utils.Threshold(ImgFiltrada,limiar)   
-
-    ##--> OUTRO METODO DE BINARIZACAO
-    # Imagem_Binaria = bordas.Canny(Imagem_Original,m,n) 
-
+    Imagem_Binaria = sg.otsu(Imagem_Original) 
 
     # Realiza a plotagem das imagens
     ut_img.plotagem_imagem(Imagem_Original, Imagem_Binaria)

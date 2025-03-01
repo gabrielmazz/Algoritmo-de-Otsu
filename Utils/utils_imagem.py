@@ -5,7 +5,7 @@ from rich.console import Console
 from rich.prompt import Prompt
 import os
 
-#leitura da imagem
+# Leitura da imagem
 def leitura_Imagem(nome):
     print(nome)
     imagem = mpimg.imread(nome)
@@ -15,7 +15,7 @@ def leitura_Imagem(nome):
 def plotagem_imagem(Imagem_Original, Imagem_Binaria):
     
     # Cria uma figura com dois subplots lado a lado
-    fig, [ax1, ax2] = plt.subplots(1, 2, figsize=(20, 30))
+    fig, [ax1, ax2] = plt.subplots(1, 2, figsize=(10, 5))
     
     # Exibe a imagem original no primeiro subplot
     ax1.imshow(Imagem_Original, cmap='gray')

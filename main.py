@@ -33,7 +33,7 @@ def metodo_otsu(imagem_escolhida, tipo, filtro, m, n):
 
 
     # Realiza a plotagem das imagens
-    ut_img.plotagem_imagem(Imagem_Original,Imagem_Binaria)
+    ut_img.plotagem_imagem(Imagem_Original, Imagem_Binaria)
     
     # Salva a imagem na pasta de resultados
     if SAVE:

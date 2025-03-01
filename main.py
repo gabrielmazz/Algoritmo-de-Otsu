@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import argparse
-
+from rich.console import Console
 import utils
 import filters
 import bordas
@@ -15,10 +15,10 @@ parser = argparse.ArgumentParser()
 SAVE = parser.add_argument('--save', action='store_true', help='Salvar a imagem na pasta de resultados')
 
 
-def main(imagem, tipo, filtro, m, n):
+def metodo_otsu(imagem_escolhida, tipo, filtro, m, n):
     
     # Leitura da imagem
-    Imagem_Original = ut_img.leitura_Imagem('./imagens/{}.jpg'.format(imagem))    
+    Imagem_Original = ut_img.leitura_Imagem('./imagens/{}'.format(imagem_escolhida))    
 
     # Binarização da imagem com o método de Otsu
     Imagem_Binaria = segmentacao.otsu(Imagem_Original) 
@@ -41,4 +41,12 @@ def main(imagem, tipo, filtro, m, n):
 
 if __name__ == '__main__':
     
-    main('imagem2','otsu','Gaussian', 0.3, 0.7)
+    console = Console()
+    
+    # Lista as imagens disponíveis na pasta
+    imagens_disponiveis = ut_img.lista_imagens_pasta('./imagens', console)
+    
+    # Escolhe uma imagem para aplicar o método de Otsu
+    imagem_escolhida = ut_img.escolher_imagens(imagens_disponiveis, console)
+    
+    metodo_otsu(imagem_escolhida ,'otsu','Gaussian', 0.3, 0.7)

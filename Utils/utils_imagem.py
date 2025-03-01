@@ -1,9 +1,13 @@
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
+from rich.console import Console
+from rich.prompt import Prompt
+import os
 
 #leitura da imagem
 def leitura_Imagem(nome):
+    print(nome)
     imagem = mpimg.imread(nome)
     return imagem
 
@@ -23,4 +27,28 @@ def plotagem_imagem(Imagem_Original, Imagem_Binaria):
     plt.show()
     
 def salvar_imagem(Imagem_Binaria, nome):
+    
     plt.imsave(nome, Imagem_Binaria, cmap='Greys')
+    
+def lista_imagens_pasta(pasta, console):
+    
+    imagens = [f for f in os.listdir(pasta)]
+    
+    console.print('Imagens disponíveis na pasta:', imagens)
+    
+    for i, imagem in enumerate(imagens):
+        console.print('{}. {}'.format(i+1, imagem))
+        
+    return imagens
+
+def escolher_imagens(imagens, console):
+    
+    
+    while True:
+        escolha = int(Prompt.ask('Escolha uma imagem para aplicar o método de Otsu:', console=console))
+        
+        if escolha > 0 and escolha <= len(imagens):
+            return imagens[escolha-1]
+        else:
+            console.print('Escolha inválida. Tente novamente.')
+    

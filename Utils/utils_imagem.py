@@ -32,10 +32,13 @@ def salvar_imagem(Imagem_Binaria, nome):
     
 def lista_imagens_pasta(pasta, console):
     
+    # Lista as imagens disponíveis na pasta
     imagens = [f for f in os.listdir(pasta)]
     
+    # Exibe as imagens disponíveis na pasta
     console.print('Imagens disponíveis na pasta:', imagens)
     
+    # Printa as imagens
     for i, imagem in enumerate(imagens):
         console.print('{}. {}'.format(i+1, imagem))
         
@@ -43,7 +46,7 @@ def lista_imagens_pasta(pasta, console):
 
 def escolher_imagens(imagens, console):
     
-    
+    # Escolhe uma imagem para aplicar o método de Otsu
     while True:
         escolha = int(Prompt.ask('Escolha uma imagem para aplicar o método de Otsu:', console=console))
         

@@ -41,6 +41,7 @@ def metodo_otsu(imagem_escolhida, tipo, filtro, m, n):
 
 if __name__ == '__main__':
     
+    # Inicializa a console
     console = Console()
     
     # Lista as imagens disponíveis na pasta

@@ -7,6 +7,7 @@ import Utils.utils_imagem as ut_img
 import Utils.utils_code as ut_code
 import numpy as np
 import time
+import Utils.library_checker as lib_checker
 
 # Variáveis para passagem de argumentos via terminal
 parser = argparse.ArgumentParser()
@@ -63,12 +64,16 @@ def metodo_otsu(imagem_escolhida, tipo, args):
 
 if __name__ == '__main__':
     
+    # Verifica se o usuário passou uma URL de imagem
+    args = parser.parse_args()
+    
+    # Verifica se todas as bibliotecas estão instaladas
+    lib_checker.check_library()
+    
     # Funções triviais
     ut_code.clear_terminal()
     ut_code.print_title()
     
-    # Verifica se o usuário passou uma URL de imagem
-    args = parser.parse_args()
     
     # Baixa a imagem da URL
     if args.url:

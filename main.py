@@ -28,13 +28,13 @@ def metodo_otsu(imagem_escolhida, tipo, args):
         task = progress.add_task("[cyan]Processando...", total=3)
         
         # Leitura da imagem
-        progress.update(task, advance=1, description='[green]Lendo a imagem...')
+        progress.update(task, advance=1, description='[cyan]Lendo a imagem...')
         Imagem_Original = ut_img.leitura_Imagem('./imagens/{}'.format(imagem_escolhida))    
 
         time.sleep(1)
 
         # Binarização da imagem com o método de Otsu
-        progress.update(task, advance=1, description='[green]Aplicando o método de Otsu...')
+        progress.update(task, advance=1, description='[cyan]Aplicando o método de Otsu...')
         Imagem_Binaria = segmentacao.otsu(Imagem_Original) 
 
         time.sleep(1)
@@ -43,7 +43,7 @@ def metodo_otsu(imagem_escolhida, tipo, args):
         tempo_execucao = time.time() - tempo_inicio - 2
 
         # Realiza a plotagem das imagens
-        progress.update(task, advance=1, description='[green]Plotando as imagens...')
+        progress.update(task, advance=1, description='[cyan]Plotando as imagens...')
         ut_img.plotagem_imagem(Imagem_Original, Imagem_Binaria)
     
     time.sleep(1)
@@ -59,7 +59,7 @@ def metodo_otsu(imagem_escolhida, tipo, args):
         
     # Salva a imagem na pasta de resultados
     if args.save:
-        ut_img.salvar_imagem(Imagem_Binaria, './resultados/{}_{}'.format(imagem_escolhida, tipo))
+        ut_img.salvar_imagem(Imagem_Binaria, './Resultados/{}_{}'.format(imagem_escolhida, tipo))
     
 
 if __name__ == '__main__':
